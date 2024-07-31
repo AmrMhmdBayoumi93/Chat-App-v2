@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFiled extends StatelessWidget {
+class CustomTextFormFiled extends StatelessWidget {
     
     String? hintText;
     void Function (String value)? onChanged;
 
 
-   CustomTextFiled({this.hintText,this.onChanged });
+     CustomTextFormFiled({this.hintText,this.onChanged });
   
   @override
   Widget build(BuildContext context) {
-    return TextField(  
+    return TextFormField(  
+
+      validator: (data) {
+        if (data!.isEmpty) {
+          return ' Filed is Reuired !! Please enter some data';
+        }
+      },
+
       onChanged: onChanged,
 
                   cursorColor:  Colors.white,
