@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({super.key});
-
+  const RegisterScreen({super.key});
   static String id = 'RegisterScreen';
 
   @override
@@ -130,8 +129,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                formKey.currentState!.save();
                   
                               FirebaseAuth auth = FirebaseAuth.instance;
+                              
                              
-                             
+                               //    at the start of code register process
                               isLoading=true;
                               setState(() {
                                 
@@ -148,7 +148,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 print('Register is done');
               
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                       content: Text('Registration successful'),
             
                                   ),
@@ -166,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   if (e.code == 'weak-password') {
                                    print('The password provided is too weak.');
                                    ScaffoldMessenger.of(context).showSnackBar(
-                                     SnackBar(
+                                     const SnackBar(
                                        content: Text('The password provided is too weak.'),
                                      ),
                                    );
@@ -174,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                  } else if (e.code == 'email-already-in-use') {
                                 print('The account already exists for that email.');
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('The account already exists for that email.')),);
+                                  const SnackBar(content: Text('The account already exists for that email.')),);
               
                                  }
               
@@ -183,7 +183,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               catch(e){
                       
                        ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('there was an error try again later...')),);
                               }
             
@@ -201,6 +201,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
 
+
+
+
+                        //    at the end of code register process
                                
                       isLoading =false;
                       setState(() {
@@ -215,13 +219,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
               
               
               
+
+
+
+
+
+
               
               
                           const SizedBox(height: 15,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Already have an account? ',
                                 style: TextStyle(
                                   fontSize: 22,
@@ -232,7 +242,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 onTap: () {
                                   Navigator.pop(context);  // return to the previous screen
                                 },
-                                child: Text(
+                                child: const Text(
                                   ' Login here ',
                                   style: TextStyle(
                                     fontSize: 22,

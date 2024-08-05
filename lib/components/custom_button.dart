@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
 
   // VoidCallback? onTap;        VoidCallback? == void Function()? 
     void Function()? onTap;
-   CustomButton({required this.buttonName ,required this.onTap});
+   CustomButton({super.key, required this.buttonName ,required this.onTap});
  
         
   @override
@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
                   child: Text(buttonName,
       
                 
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 30,
                     fontWeight:  FontWeight.bold,
                     color: Colors.black,

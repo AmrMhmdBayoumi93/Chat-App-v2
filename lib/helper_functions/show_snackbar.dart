@@ -3,9 +3,12 @@
 
 
 
-void showSnackBar(BuildContext context ,String message) {
+void showSnackBar(BuildContext context ,String message,) {
     ScaffoldMessenger.of(context).showSnackBar(
                SnackBar(
-                 content: Text('there was an error try again later...')),);
+                 content: Text(message)),);
   
-  }
+  } 
+
+
+  // {Duration duration = _snackBarDisplayDuration}

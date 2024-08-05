@@ -6,8 +6,8 @@ class CustomTextFormFiled extends StatelessWidget {
     void Function (String value)? onChanged;
 
 
-     CustomTextFormFiled({this.hintText,this.onChanged });
-  
+     CustomTextFormFiled({super.key, this.hintText,this.onChanged });
+   
   @override
   Widget build(BuildContext context) {
     return TextFormField(  
@@ -16,6 +16,7 @@ class CustomTextFormFiled extends StatelessWidget {
         if (data!.isEmpty) {
           return ' Filed is Reuired !! Please enter some data';
         }
+        return null;
       },
 
       onChanged: onChanged,

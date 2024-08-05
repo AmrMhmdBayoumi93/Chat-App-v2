@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 
  static String id = 'LoginScreen';   //  static String id
 
-    LoginScreen({super.key});
+    const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -186,13 +186,19 @@ class _LoginScreenState extends State<LoginScreen> {
              print('Login success');
               print(userCredential.user!.email);
 
-          Navigator.pushNamed(context, ChatScreen.id);
-              
-             
-              
           
-           showSnackBar(context, 'Login Successefully');
-          
+          //  showSnackBar(context, 'Login Successefully');
+              ScaffoldMessenger.of (context).showSnackBar(
+              const SnackBar(content: Text('Login Successefully'),
+              duration: Duration(microseconds: 900),
+              
+                          ),
+               
+              );
+
+
+
+              Navigator.pushNamed(context, ChatScreen.id);
           
            }     on FirebaseAuthException catch (e) {
                                 if (e.code == 'user-not-found') {
@@ -247,7 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
           
-                        Text('don\'t have an account? ',
+                        const Text('don\'t have an account? ',
                         style: TextStyle(
                           fontSize: 22,
                           color: Colors.white,
@@ -265,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
            
            
             },
-                          child: Text(' Register here ',
+                          child: const Text(' Register here ',
                           style: TextStyle(
                              fontSize: 22,
                             color: Colors.white,
