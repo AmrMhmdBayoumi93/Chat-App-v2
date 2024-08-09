@@ -47,7 +47,7 @@ class ChatApp extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) =>  const LoginScreen(),     //  String value '' : return LoginScreen() widget
         RegisterScreen.id: (context) =>  const RegisterScreen(),    //  String value '' : return LoginScreen() widget
-        ChatScreen.id: (context)=>const ChatScreen(), 
+        ChatScreen.id: (context)=>   ChatScreen(), 
       },
         // home :LoginScreen()
       initialRoute: LoginScreen.id , 
