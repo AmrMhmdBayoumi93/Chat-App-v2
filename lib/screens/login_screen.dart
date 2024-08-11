@@ -108,6 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
           
           
                    CustomTextFormFiled(
+                    obscureText: true,
+                    
                     onChanged: (data){
                       password=data;
                       },
@@ -198,7 +200,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-              Navigator.pushNamed(context, ChatScreen.id);
+              Navigator.pushNamed(context, ChatScreen.id,arguments: email);
+
           
            }     on FirebaseAuthException catch (e) {
                                 if (e.code == 'user-not-found') {
@@ -285,64 +288,6 @@ class _LoginScreenState extends State<LoginScreen> {
           
           
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-                            // ElevatedButton(
-                            //   style: ElevatedButton.styleFrom(
-                                
-                            //     backgroundColor: Colors.white,
-                            //     shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //     ),
-                            //   ),
-                            //   onPressed:(){
-          
-                            // },
-                            
-                            //   child: Text('LOGIN',
-                            //   style: TextStyle(
-                            //     fontSize: 25,
-                            //     color: Colors.black,
-                            //     fontFamily: 'pacifico',
-                            //   ),
-                            // ),),
-              
-          
-                           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-                   
                    
                    
                    

@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 class CustomTextFormFiled extends StatelessWidget {
     
     String? hintText;
+    bool obscureText;
     void Function (String value)? onChanged;
 
 
-     CustomTextFormFiled({super.key, this.hintText,this.onChanged });
-   
+     CustomTextFormFiled({super.key, this.hintText,this.onChanged,this.obscureText = false });
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(  
+      obscureText: obscureText,
 
       validator: (data) {
         if (data!.isEmpty) {

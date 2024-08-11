@@ -25,6 +25,11 @@ final ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
 
+    var email =ModalRoute.of(context)!.settings.arguments ;
+    // String email =ModalRoute.of(context)!.settings.arguments as String;
+      // recieve email from LoginScreen to make id for any message 
+
+
     return  StreamBuilder<QuerySnapshot>(
       
        stream: messages.orderBy('createdAt',descending: true).snapshots(), 
@@ -109,85 +114,90 @@ final ScrollController scrollController = ScrollController();
                           itemCount: messagesList.length,
                          itemBuilder: (context, index) {
                
-                         return CustomChatBubble(
+                         return messagesList[index].id==email?  CustomChatBubbleForMe(
                          messageModel:messagesList[index],
-
-                            );
+                            ) :CustomChatBubbleForFriend(
+                              messageModel: messagesList[index],);
                 
                          }
                ),
              ),
       
 
+
+
+
+
       //   TextField()
       
       
-      
-      
-             TextField(
-              style: TextStyle(
-               fontSize: 25,
-              ),
-              controller:  messageController,
-              
-              onSubmitted: (data){
-                messages.add({
-                 kMessage: data,
-                  kCreatedAt:DateTime.now(),
-      
-            });
-           
-            messageController.clear();  // delete the message from TF
-
-
-
-    //  scrollController.position.minScrollExtent,
-    
-           scrollController.animateTo(    // go to last message
-            scrollController.position.minScrollExtent, 
-            duration: Duration(seconds: 1),
-             curve: Curves.easeIn,
-  );
-
-        //   scrollController.jumpTo()
-
-              },
-      
-      
-      
-              
-              
-              decoration: const InputDecoration(
-                suffixIcon: Icon(Icons.send,
-                color: kPrimaryColor,
+             Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: TextField(
+                style: TextStyle(
+                 fontSize: 25,
                 ),
-                hintText: 'Send a message',
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: kPrimaryColor,
-                      width: 2.0,
-                                      ),
-                                        borderRadius:BorderRadius.all(Radius.circular(30)),
-      
-      
-      
+                controller:  messageController,
+                
+                onSubmitted: (data){
+                  messages.add({
+                   kMessage: data,
+                    kCreatedAt:DateTime.now(),
+                    'id':email,
+                     
+                           });
+                          
+                           messageController.clear();  // delete the message from TF
+               
+               
+                   //  scrollController.position.minScrollExtent,
+                   
+                          scrollController.animateTo(    // go to last message
+                           scrollController.position.minScrollExtent, 
+                           duration: Duration(seconds: 1),
+                              curve: Curves.easeIn,
+                 );
+               
+                       //   scrollController.jumpTo()
+               
+                },
+                     
+                     
+                     
+                
+                
+                decoration: const InputDecoration(
+                  suffixIcon: Icon(Icons.send,
+                  color: kPrimaryColor,
+                  ),
+                  hintText: 'Send a message',
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: kPrimaryColor,
+                        width: 2.0,
+                                        ),
+                                          borderRadius:BorderRadius.all(Radius.circular(30)),
+                     
+                     
+                     
+                  ),
+                  enabledBorder:  OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: kPrimaryColor,
+                        width: 2.0,
+                                        ),
+                                          borderRadius:BorderRadius.all(Radius.circular(30)),
+                     
+                     
+                     
+                  ),
+                     
+                     
+                     
                 ),
-                enabledBorder:  OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: kPrimaryColor,
-                      width: 2.0,
-                                      ),
-                                        borderRadius:BorderRadius.all(Radius.circular(30)),
-      
-      
-      
-                ),
-      
-      
-      
-              ),
-      
-            ),
+                     
+                           ),
+             ),
       
           ] 
           
